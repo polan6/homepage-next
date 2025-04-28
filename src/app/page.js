@@ -26,6 +26,8 @@ export default function Home() {
 	}
 	useEffect(()=>{
 		setIsLoaded(sessionStorage.getItem("isLoaded"))
+		console.log(sessionStorage.getItem("isLoaded"))
+		console.log(process.env.NODE_ENV)
 		if(process.env.NODE_ENV==="production"&&(!isLoaded)){
 			access()
 			setIsLoaded(true)
