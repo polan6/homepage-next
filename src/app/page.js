@@ -26,14 +26,13 @@ export default function Home() {
 	}
 	useEffect(()=>{
 		setIsLoaded(sessionStorage.getItem("isLoaded"))
-		console.log(sessionStorage.getItem("isLoaded"))
-		console.log(process.env.NODE_ENV)
-		if(process.env.NODE_ENV==="production"&&(!isLoaded)){
+		if(process.env.NODE_ENV==="production"&&(!sessionStorage.getItem("isLoaded"))){
 			console.log('count +1')
 			access()
 			setIsLoaded(true)
 			sessionStorage.setItem('isLoaded',true)
 		}else{
+			setIsLoaded(sessionStorage.getItem("isLoaded"))
 			getCount()
 		}
 	},[])
