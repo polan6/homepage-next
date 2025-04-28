@@ -1,95 +1,59 @@
+'use client'
 import Image from "next/image";
-import styles from "./page.module.css";
+// import styles from "./page.module.css";
+import Header from "@/component/assets/Header";
+import Footer from "@/component/assets/Footer";
+import LinkList from "@/component/assets/LinkList";
+import './Home.css'
+
+import { db } from '../component/firebase'
+import { doc, updateDoc, increment,collection,getDoc } from "firebase/firestore";
+import { useState,useEffect } from "react";
+
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+	const [isLoaded,setIsLoaded]=useState(true)
+	const [accessCount,setAccessCount]=useState('')
+	const access=async()=>{
+		await updateDoc(doc(db, "access", "counter"), {
+			count: increment(1)
+		});
+		await getCount()
+	}
+	const getCount=async()=>{
+		const snap=await getDoc(doc(db, "access", "counter"));
+		setAccessCount(snap.data()?.count)
+	}
+	useEffect(()=>{
+		setIsLoaded(sessionStorage.getItem("isLoaded"))
+		if(process.env.NODE_ENV==="production"&&(!isLoaded)){
+			access()
+			setIsLoaded(true)
+			sessionStorage.setItem('isLoaded',true)
+		}else{
+			getCount()
+		}
+	},[])
+	return (
+		<>
+		<Header/>
+		<div className='home__content'>
+			<h1>自己紹介</h1>
+			<div>名前: Polan</div>
+			<div>好きなこと: コンピュータ・プログラミングの勉強</div>
+			<div>やりたいこと: 技術ブログの執筆</div>
+			{/* links__container links__items links__items-item*/}
+			<div className="links__container">
+				<h1>リンク</h1>
+				<LinkList isHam={false}/>
+			</div>
+			<div className='accessCounter'>
+				<h1>アクセス数</h1>
+				{accessCount}
+			</div>
+		</div>
+		<Footer/>
+		</>
+	)
 }
+export const dynamic = 'force-dynamic'

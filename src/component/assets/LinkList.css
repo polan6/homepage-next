@@ -1,0 +1,31 @@
+.links__container{
+	/* margin-top: 50px; */
+}
+
+
+.links__items{
+	list-style: none;
+	padding-left:0
+}
+
+.links__items-item a {
+	text-decoration: none;
+  color: black;
+  width: 100%;
+  display: block;
+  /* text-align: center; */
+  /* font-size: 24px; */
+  /* margin-bottom: 24px; */
+	transition: color 0.3s;
+}
+.links__items-item:last-child a {
+  margin-bottom: 0;
+}
+
+.links__items-item a:hover{
+	text-decoration: none;
+	color: cadetblue;
+}
+.links__items-item a svg{
+	margin-right: 5px;
+}
