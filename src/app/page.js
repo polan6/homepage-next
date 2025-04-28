@@ -29,6 +29,7 @@ export default function Home() {
 		console.log(sessionStorage.getItem("isLoaded"))
 		console.log(process.env.NODE_ENV)
 		if(process.env.NODE_ENV==="production"&&(!isLoaded)){
+			console.log('count +1')
 			access()
 			setIsLoaded(true)
 			sessionStorage.setItem('isLoaded',true)
