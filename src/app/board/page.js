@@ -16,7 +16,7 @@ const Board = () => {
 	const [authUser,setAuthUser]=useState('')
 	const login=async()=>{
 		try {
-			signInWithPopup(auth,provider).then((result)=>{
+			signInWithPopup(auth,provider).then((result)=>{ //警告が出るが正常に動作する
 				localStorage.setItem('isLogin',true)
 				setIsLogin(true)
 			})
