@@ -33,8 +33,6 @@ export default function Home() {
 		fetchCount()
 	},[])
 	return (
-		<>
-		<Header/>
 		<div className='home__content'>
 			<h1>自己紹介</h1>
 			<div>名前: Polan</div>
@@ -50,8 +48,6 @@ export default function Home() {
 				{accessCount}
 			</div>
 		</div>
-		<Footer/>
-		</>
 	)
 }
 export const dynamic = 'force-dynamic'
