@@ -1,0 +1,36 @@
+
+.weather__content h1{
+	margin: 5px 0px;
+	
+}
+
+.weather__forecast{
+	font-size:85%;
+}
+
+.weather__block{
+	border: 3px solid red;
+	margin: 5px 0px;
+	padding: 5px;
+	border-radius: 5px;
+	max-width: 350px;
+}
+.weather__block h3{
+	margin: 0px 0px;
+	
+}
+
+.weather__image{
+	width:2.5em;
+	vertical-align: middle;
+}
+
+.weather__chanceOfRain{
+	border: 1px solid #000;
+	border-collapse: collapse;
+}
+.weather__chanceOfRain th,td{
+	border: 1px solid #000;
+	width: 80px;
+	text-align: center;
+}

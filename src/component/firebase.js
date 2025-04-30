@@ -1,9 +1,8 @@
 
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import {getAuth,GoogleAuthProvider} from "firebase/auth"
-import { getAnalytics } from "firebase/analytics";
-import {getFirestore} from "firebase/firestore"
+// import { initializeApp } from "firebase/app";
+import {GoogleAuthProvider} from "firebase/auth"
+// import {getFirestore} from "firebase/firestore"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -21,10 +20,47 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
+// https://zenn.dev/maztak/articles/e72a5a38435af7
+// https://yiwashita.com/posts/firebase-admin-nextjs //admin
 
-const app = initializeApp(firebaseConfig);
+// const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
-const auth=getAuth(app)
+// const auth=getAuth(app)
 const provider=new GoogleAuthProvider()
-const db=getFirestore(app)
-export{auth,provider,db}
+// const db=getFirestore(app)
+
+
+import admin from 'firebase-admin';
+import { initializeApp, cert, getApps } from "firebase-admin/app";
+// import { getAuth } from "firebase-admin/auth";
+import { getFirestore } from "firebase-admin/firestore";
+
+
+if (!admin.apps.length) {
+	admin.initializeApp({
+		credential: admin.credential.cert({
+			projectId: process.env.PROJECT_ID,
+			privateKey: process.env.PRIVATE_KEY.replace(/\\n/g, '\n'),
+			clientEmail: process.env.CLIENT_EMAIL,
+		})
+	})
+	// admin.initializeApp({
+	// 	credential: cert(serviceAccount)
+	// });
+}
+// const auth=getAuth(app)
+// const db=getFirestore(app)
+// // 例：Firestore にアクセス
+const db = admin.firestore();
+const auth = admin.auth();
+
+
+
+
+
+
+
+export{auth,provider,db,admin}
+
+
+

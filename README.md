@@ -1,36 +1,21 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+https://polan.vercel.app/
 
-## Getting Started
+# 内容
 
-First, run the development server:
+## ホーム(自己紹介)
+自己紹介を書いた。アクセスカウンターが付属している。sessionStorageを利用し、再読み込みしてもアクセスがカウントされないようになっている。
+## 掲示板
+Firebaseの練習として作成した。Googleアカウントでログインすることで書き込める簡易的な掲示板。
+## 天気予報
+プルダウンで全国の都市を指定し天気を見ることができたら便利だと思い作成した。プルダウンメニューで地方・都道府県・都市を指定することで全国の天気と降水確率を見ることができる。天気予報APIを使用した。現在北海道の一部と関東・近畿が実装されている。
+## うつ病チェック
+精神症状に関心があるため作成した。簡易抑うつ症状尺度（QIDS-J）の点数を自動計算する機能を作成した。未入力の項目がある場合、その項目まで自動でスクロールが行われるように設定した。
+## その他
+ハンバーガーメニューを開くと各コンテンツへのリンクが表示される。
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# 更新履歴
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 2024-12-03 天気予報を追加(関東・近畿・北海道の一部)
+- 2024-12-04 うつ病チェックの追加
+- 2024-12-06 天気予報を完成・Qiitaのリンクを追加
+- 2025-04-30 Next.jsに移行、セキュリティの強化

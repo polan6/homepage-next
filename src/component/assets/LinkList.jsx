@@ -29,12 +29,12 @@ const LinkList = ({isHam}) => {
 					掲示板
 				</Link>
 			</li>
-			{/* <li className={isHam?'header__menu-items-item':"links__items-item"}>
-				<Link to="/weather" onClick={isHam?toggleHamburger:()=>{}}>
+			<li className={isHam?'header__menu-items-item':"links__items-item"}>
+				<Link href="/weather" onClick={isHam?toggleHamburger:()=>{}}>
 					<FontAwesomeIcon icon={faSun} />
 					天気予報
 				</Link>
-			</li> */}
+			</li>
 			<li className={isHam?'header__menu-items-item':"links__items-item"}>
 				<Link href="/depression" onClick={isHam?toggleHamburger:()=>{}}>
 					<FontAwesomeIcon icon={faHospital} />
@@ -54,7 +54,7 @@ const LinkList = ({isHam}) => {
 				</Link>
 			</li> */}
 			<li className={isHam?'header__menu-items-item':"links__items-item"}>
-				<a href="https://github.com/polan6/homepage" onClick={isHam?toggleHamburger:()=>{}}>
+				<a href="https://github.com/polan6/homepage-next" onClick={isHam?toggleHamburger:()=>{}}>
 					<FontAwesomeIcon icon={faGithub} />
 					GitHub
 				</a>

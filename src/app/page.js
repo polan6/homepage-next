@@ -6,35 +6,31 @@ import Footer from "@/component/assets/Footer";
 import LinkList from "@/component/assets/LinkList";
 import './Home.css'
 
-import { db } from '../component/firebase'
-import { doc, updateDoc, increment,collection,getDoc } from "firebase/firestore";
+
 import { useState,useEffect } from "react";
 
 
 export default function Home() {
 	const [isLoaded,setIsLoaded]=useState(true)
 	const [accessCount,setAccessCount]=useState('')
-	const access=async()=>{
-		await updateDoc(doc(db, "access", "counter"), {
-			count: increment(1)
-		});
-		await getCount()
-	}
-	const getCount=async()=>{
-		const snap=await getDoc(doc(db, "access", "counter"));
-		setAccessCount(snap.data()?.count)
-	}
 	useEffect(()=>{
-		setIsLoaded(sessionStorage.getItem("isLoaded"))
-		if(process.env.NODE_ENV==="production"&&(!sessionStorage.getItem("isLoaded"))){
-			console.log('count +1')
-			access()
-			setIsLoaded(true)
-			sessionStorage.setItem('isLoaded',true)
-		}else{
+		async function fetchCount(){
+			let res
+
 			setIsLoaded(sessionStorage.getItem("isLoaded"))
-			getCount()
+			if(process.env.NODE_ENV==="production"&&(!sessionStorage.getItem("isLoaded"))){
+				res=await fetch('/api/count?i=1')
+				setIsLoaded(true)
+				sessionStorage.setItem('isLoaded',true)
+			}else{
+				res=await fetch('/api/count?i=0')
+				setIsLoaded(sessionStorage.getItem("isLoaded"))
+
+			}
+			const data=await res.json()
+			setAccessCount(data.count)
 		}
+		fetchCount()
 	},[])
 	return (
 		<>
