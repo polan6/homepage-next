@@ -19,7 +19,7 @@ const Header = () => {
 				<div className="header__text">
 					<Link href="/">
 						<h1>
-							ホームページ</h1>
+							Polanのホームページ</h1>
 					</Link>
 				</div>
 
