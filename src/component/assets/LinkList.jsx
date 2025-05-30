@@ -36,24 +36,6 @@ const LinkList = ({isHam}) => {
 				</Link>
 			</li>
 			<li className={isHam?'header__menu-items-item':"links__items-item"}>
-				<Link href="/depression" onClick={isHam?toggleHamburger:()=>{}}>
-					<FontAwesomeIcon icon={faHospital} />
-					うつ病チェック
-				</Link>
-			</li>
-			{/* <li className={isHam?'header__menu-items-item':"links__items-item"}>
-				<Link to="/periodictable" onClick={isHam?toggleHamburger:()=>{}}>
-					<FontAwesomeIcon icon={faHospital} />
-					元素周期表
-				</Link>
-			</li> */}
-			{/* <li className={isHam?'header__menu-items-item':"links__items-item"}>
-				<Link to="/interview" onClick={isHam?toggleHamburger:()=>{}}>
-					<FontAwesomeIcon icon={faCommentDots} />
-					技術面接質問集
-				</Link>
-			</li> */}
-			<li className={isHam?'header__menu-items-item':"links__items-item"}>
 				<a href="https://github.com/polan6/homepage-next" onClick={isHam?toggleHamburger:()=>{}}>
 					<FontAwesomeIcon icon={faGithub} />
 					GitHub

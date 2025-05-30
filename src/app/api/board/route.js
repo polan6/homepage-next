@@ -35,8 +35,8 @@ const createPost=async()=>{
 		user:user,
 		postText:postText,
 		author:{
-			username:auth.currentUser.displayName,
-			id:auth.currentUser.uid
+			username:auth.currentUser?.displayName,
+			id:auth.currentUser?.uid
 		},
 		time:getTime()
 	});
