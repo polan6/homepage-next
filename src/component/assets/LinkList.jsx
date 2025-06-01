@@ -13,9 +13,7 @@ const LinkList = ({isHam}) => {
 		ham.classList.toggle('active')
 		menu.classList.toggle('active')
 	}
-	{/* links__container links__items links__items-item*/}
 	return (
-		
 		<ul className={isHam?'header__menu-items':"links__items"}>
 			<li className={isHam?'header__menu-items-item':"links__items-item"}>
 				<Link href="/" onClick={isHam?toggleHamburger:()=>{}}>
